@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Selector chats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='assets/css/styles.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body>
+    <!-- Start: Navigation with Button -->
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+        <div class="container"><a class="navbar-brand" href="#">Chat Stand</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item"></li>
+                </ul><span class="navbar-text actions"> <a data-bs-hover-animate="flash" class="login" href="#">Hello, {{ name }}</a>
+                    <a class="btn btn-dark action-button" role="button" href="/logout">Sign Up</a></span></div>
+        </div>
+    </nav>
+    <!-- End: Navigation with Button -->
+    <!-- Start: Table With Search -->
+    <div class="col-md-12 bounce animated search-table-col">
+        <div class="form-group pull-right col-lg-4"><input type="text" class="search form-control" placeholder="Search by typing here.."></div><span class="counter pull-right"></span>
+        <div class="table-responsive table-bordered table table-hover table-bordered results">
+            <table class="table table-bordered table-hover">
+                <thead class="bill-header cs">
+                    <tr>
+                        <th id="trs-hd" class="col-lg-1">Chat Name</th>
+                        <th id="trs-hd" class="col-lg-2">Messages Count</th>
+                        <th class="text-center col-lg-3" id="trs-hd">Admin</th>
+                        <th id="trs-hd" class="col-lg-2">Members count</th>
+                        <th class="text-center col-lg-2" id="trs-hd">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for chat in chats %}
+                        <tr>
+                            <td class="text-center">{{ chat['name'] }}</td>
+                            <td>{{ chat['count_msg'] }}</td>
+                            <td>{{ chat['admin'] }}</td>
+                            <td>{{ chat['count_users'] }}</td>
+                            <td>
+                                <form action="/chat" method="POST">
+                                    <input class="btn btn-success" id="direct" style="margin-left: 5px;" type="submit" name="redirect" value="{{ chat['id'] }}">
+                                    <input class="btn btn-danger" id="drop" name="drop" style="margin-left: 5px;" type="submit" value="{{ chat['id'] }}">
+                                </form>
+                                
+                            </td>
+                        </tr>
+                        
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- End: Table With Search -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for( 'static', filename='assets/js/script.min.js')}}"></script>
+</body>
+
+</html>

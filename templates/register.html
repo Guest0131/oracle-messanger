@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='assets/css/styles.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body>
+    <!-- Start: Pretty Registration Form -->
+    <div class="row register-form">
+        <div class="col-md-8 offset-md-2">
+            <form class="custom-form" method="POST" action="{{ url_for('reg') }}">
+                <h1>Register Form</h1>
+
+                <!-- Start: Error message -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="alert alert-warning text-dark border rounded border-danger" role="alert" >
+                            <span>
+                                {{ messages[0] }}
+                            </span>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <!-- End: Error message -->       
+                 
+                <div class="form-row form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="col-form-label" for="name-input-field">Login</label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" name="login">
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="col-form-label" for="name-input-field">Name</label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" name="name">
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="col-form-label" for="name-input-field">Surname</label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" name="surname">
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="col-form-label" for="email-input-field">Email </label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="email" name="email">
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="col-form-label" for="pawssword-input-field">Password </label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="password" name="password">
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-sm-4 label-column"><label class="col-form-label" for="repeat-pawssword-input-field">Department</label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="text" name="department"></div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-sm-4 label-column"><label class="col-form-label" for="repeat-pawssword-input-field">Rank</label></div>
+                    <div class="col-sm-6 input-column"><input class="form-control" type="text" name="rank"></div>
+                </div>
+                <input class="btn btn-light submit-button" type="submit" value="Submit Form">
+            </form>
+        </div>
+    </div>
+    <!-- End: Pretty Registration Form -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for( 'static', filename='assets/js/script.min.js')}}"></script>
+</body>
+
+</html>

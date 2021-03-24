@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{ chat_name }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='assets/css/styles.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body>
+    <!-- Start: Community ChatComments -->
+    <div class="card">
+        <div class="card-header">
+            <h3>{{ chat_name }}</h3>
+        </div>
+        {% for message in messages %}
+        <div class="container-fluid mt-100">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div class="media flex-wrap w-100 align-items-center">
+                                <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true">{{ message['author'] }}</a>
+                                    <div class="text-muted small">{{ message['time'] }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>{{ message['text'] }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="input-group" style="margin: auto;width: 100%">
+            <form action="/chat" method="post" style="margin: auto; width: 80%">                
+                <div class="input-group-append">
+                    <input class="form-control" type="text" name="text-msg">
+                    <input class="btn btn-primary" type="submit" style="background-color: black;border-color: gray;" name="send-msg" value="Send">
+                </div>
+            </form>
+            
+        </div>
+
+    </div>
+    <!-- End: Community ChatComments -->
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for( 'static', filename='assets/js/script.min.js')}}"></script>
+</body>
+
+</html>
